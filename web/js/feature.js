@@ -1,8 +1,3 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
- */
-
 
 function toggleMenu(optionBtn) {
     // Đóng tất cả menu trước khi mở menu mới
@@ -39,6 +34,13 @@ function showPlaylistForm(event, songId) {
     document.querySelectorAll(".add-to-playlist").forEach(button => {
         button.setAttribute("data-song-id", songId);
     });
+    
+     fetch('GetSongIdServlet?song_id=' + songId) 
+        .then(response => response.text())
+        .then(html => {
+            
+        })
+        .catch(error => console.error("Lỗi:", error));
 
 
 }
@@ -101,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function removeFromPlaylist(event, songId, playlistId) {
     event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a hoặc button
-
+    
     if (!songId) {
         console.error("Lỗi: Thiếu songId");
         return;
@@ -150,6 +152,24 @@ function deletePlaylist(playlistId) {
     }
 }
 
+function removeFromHistory(event, historyId) {
+      
+        fetch('HistoryServlet', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams({
+                action: 'remove',
+                historyId: historyId
+            })
+        }).then(response => response.text())
+                .then(data => {
+                    location.reload();
+                    console.log(data);
+                })
+                .catch(error => console.error("Lỗi:", error));
+    
+}
+
 function openEditForm() {
     document.getElementById("edit-form-container").classList.remove("hidden");
 }
@@ -174,4 +194,9 @@ function savePlaylist(playlistId) {
                 closeEditForm();
                 location.reload();
             });
+}
+
+function sendSongId(songId) {
+    document.getElementById("songId").value = songId;
+    document.getElementById("addSongForm").submit();
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controller;
 
 import dbcontext.ConnectDB;
@@ -80,7 +76,7 @@ public class GetHistoryServlet extends HttpServlet {
 
         try (Connection conn = ConnectDB.getInstance().openConnection()) {
             String query = """
-        SELECT s.song_id, s.song_name, s.artist, s.file_url, s.song_img, h.listened_at, 
+        SELECT h.history_id, s.song_id, s.song_name, s.artist, s.file_url, s.song_img, h.listened_at,
                CASE WHEN l.user_id IS NOT NULL THEN 1 ELSE 0 END AS liked 
         FROM History h 
         JOIN Songs s ON h.song_id = s.song_id
@@ -97,6 +93,7 @@ public class GetHistoryServlet extends HttpServlet {
 
             while (rs.next()) {
                 JSONObject song = new JSONObject();
+                song.put("history_id", rs.getInt("history_id")); 
                 song.put("song_id", rs.getInt("song_id"));
                 song.put("song_name", rs.getString("song_name"));
                 song.put("artist", rs.getString("artist"));

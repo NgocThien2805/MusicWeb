@@ -3,20 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/controller/SettingsServlet.java</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/controller/SongServlet.java</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/login.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/Admin.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/playlist_detail.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/homepage.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/library.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/controller/AdminServlet.java</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/profile.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/addSong.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/include/header.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/include/view_playlist.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/include/nav_libary.jsp</file>
-            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/settings.jsp</file>
+            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/controller/RegisterServlet.java</file>
+            <file>file:/D:/Ky4/PRJ301/MusicWeb/web/WEB-INF/web.xml</file>
+            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/com/vnpay/common/Config.java</file>
+            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/com/vnpay/common/VNPayReturnServlet.java</file>
+            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/controller/VNPAYServlet.java</file>
+            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/com/vnpay/common/ajaxServlet.java</file>
+            <file>file:/D:/Ky4/PRJ301/MusicWeb/src/java/controller/LoginServlet.java</file>
             <file>file:/D:/Ky4/PRJ301/MusicWeb/web/register.jsp</file>
         </group>
     </open-files>

@@ -149,7 +149,7 @@
                                 <!-- Menu upload cố định dưới avatar -->
                                 <div id="uploadMenu" class="upload-menu">
                                     <form action="UploadAvatarServlet" method="post" enctype="multipart/form-data">
-                                        <input type="file" name="avatar" class="form-control d-none" id="fileInput">
+                                        <input type="file" name="avatar" class="form-control d-none" id="fileInput" >
                                         <button type="button" class="btn btn-tech btn-sm w-100" onclick="document.getElementById('fileInput').click();">
                                             Chọn ảnh mới
                                         </button>

@@ -1,8 +1,3 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
- */
-
 let playlistId = new URLSearchParams(window.location.search).get("playlist_id");
 if (playlistId == null) {
     playlistId = "0";
@@ -117,7 +112,7 @@ const app = {
                       <div class="playlist-menu">
                         <div onclick="showPlaylistForm(event, ${song.song_id})">Add to play list</div>
                         <div class="item-menu remove-from-playlist" 
-                            onclick="removeFromPlaylist(event, '${song.song_id}', '${playlistId}')"
+                            onclick="removeFromHistory(event, '${song.history_id}')"
                         >Delete</div>
                       </div>
                     </div>
@@ -430,7 +425,10 @@ const app = {
         fetch('HistoryServlet', {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: new URLSearchParams({songId: songId})
+            body: new URLSearchParams({
+                action: 'add',
+                songId: songId
+            })
         }).then(response => response.text())
                 .then(data => {
                     console.log(data);
@@ -538,4 +536,3 @@ const app = {
     },
 };
 app.start();
-

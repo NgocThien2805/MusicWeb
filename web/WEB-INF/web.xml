@@ -81,12 +81,12 @@
         <servlet-class>controller.AdminServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UploadAvatarServlet</servlet-name>
-        <servlet-class>controller.UploadAvatarServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>RemoveUserServlet</servlet-name>
         <servlet-class>controller.RemoveUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSongIdServlet</servlet-name>
+        <servlet-class>controller.GetSongIdServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -157,10 +157,6 @@
         <url-pattern>/GetTrendSongServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UploadAvatarServlet</servlet-name>
-        <url-pattern>/UploadAvatarServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LikeServlet</servlet-name>
         <url-pattern>/LikeServlet</url-pattern>
     </servlet-mapping>
@@ -183,6 +179,34 @@
     <servlet-mapping>
         <servlet-name>RemoveUserServlet</servlet-name>
         <url-pattern>/RemoveUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VNPAYServlet</servlet-name>
+        <url-pattern>/VNPAYServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VNPAYServlet</servlet-name>
+        <servlet-class>controller.VNPAYServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VNPayReturnServlet</servlet-name>
+        <servlet-class>com.vnpay.common.VNPayReturnServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>com.vnpay.common.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VNPayReturnServlet</servlet-name>
+        <url-pattern>/VNPayReturnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSongIdServlet</servlet-name>
+        <url-pattern>/GetSongIdServlet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>HomepageServlet</welcome-file>

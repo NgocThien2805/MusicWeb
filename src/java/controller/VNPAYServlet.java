@@ -1,6 +1,6 @@
 package controller;
 
-import DAO.LikeDAO;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -8,14 +8,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.Date;
-import model.Like;
+import model.User;
 
 /**
  *
- * @author pc
+ * @author nguye
  */
-public class LikeServlet extends HttpServlet {
+public class VNPAYServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -32,10 +31,10 @@ public class LikeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LikeServlet</title>");  
+            out.println("<title>Servlet VNPAYServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LikeServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet VNPAYServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -51,8 +50,20 @@ public class LikeServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
+    throws ServletException, IOException {        
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("user_id");
+        // Kiểm tra quyền VIP của người dùng
+        UserDAO userDao = new UserDAO();
+        User user = userDao.getUserById(userId);
+
+        if (!user.isVip()) {
+            System.out.println("⚠ Người dùng không có quyền VIP, chuyển hướng đến payment.jsp!");
+            response.sendRedirect("payment.jsp");
+            return;
+        }else{
+            request.getRequestDispatcher("addSong.jsp").forward(request, response);
+        }
     } 
 
     /** 
@@ -65,26 +76,7 @@ public class LikeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         String action = request.getParameter("action");
-         HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute("user_id");
-         int songId = Integer.parseInt(request.getParameter("songId"));
-        LikeDAO l = new LikeDAO();
-         switch(action){
-             case "add":
-                
-                 Date date = new java.sql.Date(new Date().getTime());
-                 
-                 l.addLike(new Like(songId, Integer.parseInt(userId), (java.sql.Date) date));
-                 break;
-             case "delete":
-                  
-                  l.deleteLike(songId, Integer.parseInt(userId));
-                 break;
-            default:
-                throw new AssertionError();
-         }
-                
+        processRequest(request, response);
     }
 
     /** 
